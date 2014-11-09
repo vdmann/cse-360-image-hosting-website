@@ -1,0 +1,20 @@
+/* This is an external style sheet, which is much better practices since it considers file manipulation */
+.jumbotron {
+    /* colors the jumbotron backgorund */
+    /* background-color: #00ffff; */
+    /* or using precedence */
+    /* background-color: #00ffff !important;*/
+
+}
+
+p {
+    /* colors all text in the page view */
+    /*color: rgba(255, 0, 0, 0.59);*/
+}
+
+/* this is for the displayed thank you message */
+/*.success {
+    background: grey;
+    text-align: center;
+}
+*/
