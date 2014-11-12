@@ -63,6 +63,8 @@
 
 
 
+
+
 <!-- customized navbar only when the user logins, which gives the user to logout -->
   <!--  -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -112,16 +114,56 @@
 
 
 
-    <form action="" mehtod="post"> 
+
+
+
+
+<!--     <form action="" mehtod="post"> 
         <div id="updatePageWithImage"><h2>This button updates the images dynamically</h2></div>
         <button type="button" onclick="displayImages()">Update</button>
 
-        <!-- creating buttons using forms -->
+        creating buttons using forms
         <form action="/your-name/" method="post">
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="Redirects To Another Page" />
     </form>
+
+ -->
+
+
+<!--
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <div id="appendlist"></div> 
+        <script type="text/javascript">
+             
+                var dir = "static/media/files/2014/01/";
+                var fileextension = ".JPG";
+
+                // "$" means that it is a Jquery object
+                $.ajax({   
+
+                    //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+                    url: dir,
+                
+                    success: function (data) {
+
+                        console.log('success', data);
+
+                        //Lsit all png file names in the page
+                        $(data).find("a:contains(" + fileextension + ")").each(function () 
+                        {
+                            // this is replacing the file name?
+                            var filename = this.href.replace(window.location.host, "").replace("http:///", "");
+                            $("#appendlist").append($("<img src=" + dir + filename + "></img>"));                            
+                        });
+                    }
+                });
+        </script>
+
+
+    -->
+
 
 
 
@@ -168,31 +210,31 @@
 
 
 
-
     <div class="show-image focus pic ">
-
-    <!-- from managing static files (CSS, images) -->
-
 
 
     <!-- MEDIA_URL = '/media/'     -->
     <!-- using Django's tag feature? -->
     <img src='{{ MEDIA_URL }}/files/2014/11/01/elvis-duck.JPG' />
 
+    {% for image in images %}
+        <img src='{{ image }}' />
+    {% endfor %}
 
-    <!-- how does django for-loop work? -->
     <!-- how does html read these from Django? -->
     <!-- ul represents the unordered-list tag in HTML -->
-    <ul>
-    {% for image in images %}
-        <img src= "{{ images.url }}" />
-    {% endfor %}
-    </ul>
+    <!-- <ul> -->
+    <!-- {% for image in this_context %} -->
+        <!-- <img src= "{{ MEDIA_URL }}/<custom template object/{{ images.url }}" /> -->
+        <!-- <img src ="{{ images.url }}" /> -->
+
+    <!-- {% endfor %} -->
+    <!-- </ul> -->
 
     <!-- we need to request a user -->
-    {% for product in products %}
+  <!--   {% for product in products %}
         <img src="/media/{{ product.image }}/" />
-    {% endfor %}
+    {% endfor %} -->
 
 
     <script type="text/javascript">

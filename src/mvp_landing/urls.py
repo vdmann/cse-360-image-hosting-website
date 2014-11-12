@@ -27,8 +27,11 @@ urlpatterns = patterns('',
     
     
     # url(r'^index/$', direct_to_template, 
-    #                  { 'template':'index.html', 'extra_context': {'files':list_all_images} }
-    #                  name='index' ),
+                     # { 'template':'index.html', 'extra_context': {'files':list_all_images} }
+                     # name='index' ),
+
+    url(r'^index/$', 'dragdrop.views.GetUserImages'),
+    # url(r'^dropzone-drag-drop/$', 'dragdrop.views.GetUserImages'),
 
 
     # url(r'^dropzone-drag-drop/$', include('drinker.urls', namespace="drinker", app_name="drinker")),   

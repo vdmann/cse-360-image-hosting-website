@@ -1,7 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- aggregate the list of images here -->
-    <!-- <img src="{{ get_UploadFile.file.url }}"> -->
+{% load staticfiles %}
+
+	<!-- aggregate the list of images here -->
+    <!-- how does html read these from Django? -->
+    <!-- ul represents the unordered-list tag in HTML -->
+    
+    <h1> These are image objects {{ images }} </h1>
+
+
+	<!--  -->
+    <!-- <ul> -->
+    <!-- {% for image in images %} -->
+        <!-- <img src= "{{ MEDIA_URL }}/<custom template object/{{ images.url }}" /> -->
+        
+        <!-- MEDIA_URL = '/media/' -->
+		<!-- HERE IS AN EXAMPLE: -->
+    	<!-- <img src='{{ MEDIA_URL }}/files/2014/11/01/elvis-duck.JPG' /> -->
+		<!-- MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media") -->
+        <!-- MEDIA_ROOT = /static/media/ -->
+
+        <!-- <img src= "/media/<user.id>/"  -->
+        <!-- <img src ="{{ images.url }}" /> -->
+        
+    <!-- {% endfor %} -->
+    <!-- </ul> -->
+	<!--  -->
+
+	{% for image in images %}
+		<img src="{{ images }}" />
+
+		<!-- <img src="{{ MEDIA_URL }}{{ image }}" /> -->
+	{% endfor %}
 
 {% endblock %}

@@ -8,6 +8,8 @@ from django.db import models
 # this is used to create template tag objects
 from django.template import Context, Template
 # from django import forms <--- Do I need this?
+from django.conf import settings
+
 
 # from within dragdrop
 from .forms import UploadFileForm
@@ -67,13 +69,16 @@ def DraggingAndDropping(request):
 
         print "\n\n"
         # print "form: %s " % form
+        print "the value of request.POST: %s" % request.POST
+        print "the value of request.FILES: %s" % request.FILES
+
         print "before assigning form: %s" % UploadFileForm(request.POST, request.FILES)
         
 
 
     
         # this works by default without the user session id
-        form = UploadFileForm(request.POST, request.FILES)
+        form = UploadFileForm(request.POST, request.FILES, user)
 
         ########################################################################
 
@@ -129,13 +134,32 @@ def DraggingAndDropping(request):
  
     print "after conditional statements"
     
-    ########################################
-    # printing tests
-    # all_images = UploadFile.objects.all().filter(file)
-    # all_images = UploadFile.objects.all().filter(id)    
-    # print all_images
-    ########################################
+
+
+    # ########################################################################
+    # # TA's code
+    # # debugging statment 
+    # user_session = Session.objects.get(pk=request.session._session_key)
+    # # print "in views.py is the user id: %s" % user_session.get_decoded()
+    # # remember that the session key is a string so the id number has to be
+    # # converted in to an integer
+    # session_var = Session.objects.get(pk=request.session._session_key).get_decoded()
     
+    # user = User.objects.get(id = session_var['_auth_user_id'])
+    # # print "this is the user string: %s" % user
+
+    # user_print_test = models.ForeignKey(User, unique=True)
+    # # print "this is the user_print_test value: %s" % user_print_test
+    # ########################################################################
+
+    # ########################################
+    # # printing tests for filtering
+    all_images = UploadFile.objects.all().filter(user_id=request.user.id)
+    # # all_images = UploadFile.objects.all().filter(id)    
+    print all_images
+    # ########################################
+ 
+
 
     # this has global access for the entire website
     data = {'form': form}
@@ -147,19 +171,21 @@ def DraggingAndDropping(request):
 
 
 
+################################################################################
+# # this is for displaying the images. So, what we want to do in this function is
+# # to create a template tag for our list of images in the views this means from
+# # our models.py file using the class UploadFile we can get all the images that
+# # are uploaded concurrently by doing UploadFile.objects.all. But I think a
+# # better way to approach this is to use UploadFile.objects.user.all() <--- which
+# # im not sure if this is possible. Since we are uploading each image
+# # individually we are essentially creating an association between the user and 
+# # the images that are uploaded to the database
+# # 
+# # what I'm thinking is that UploadFile.objects.all gets all the image within the
+# # instance that the user has already uploaded their image file
+# # def GetUserImages(request, template='index.html'):
 
-# this is for displaying the images. So, what we want to do in this function is
-# to create a template tag for our list of images in the views this means from
-# our models.py file using the class UploadFile we can get all the images that
-# are uploaded concurrently by doing UploadFile.objects.all. But I think a
-# better way to approach this is to use UploadFile.objects.user.all() <--- which
-# im not sure if this is possible. Since we are uploading each image
-# individually we are essentially creating an association between the user and 
-# the images that are uploaded to the database
-# 
-# what I'm thinking is that UploadFile.objects.all gets all the image within the
-# instance that the user has already uploaded their image file
-def get_user_images(request, template='dropzone-drag-drop.html'):
+def GetUserImages2(request):
 
     # not sure if this works with Dropzone UploadFile class model 
     # ok so this actually works for all the images stored into the database 
@@ -168,8 +194,15 @@ def get_user_images(request, template='dropzone-drag-drop.html'):
     #  all_images = UploadFile.objects.all()
     # 
     # so what we need to do is apply a filter
-    all_images = UploadFile.objects.all().filter()
+    # print "\n\n\n\nThis is in GetUserImages python function"
+    # print "this is the user_id value: %s" request.user.id
+    # print "this is the file from the user: %s " % request.user.file
+    all_images = UploadFile.objects.all().filter(user_id=request.user.id)
+    # user_images = User.objects.get(pk=all_images['id_file'])
+    print "these are all_images: %s" % all_images
 
+    # Python dictionaries are also known as associative arrays or hash tables. 
+    # The general syntax of a dictionary is as follows:
     this_context = {
         'images': all_images,
     }
@@ -181,21 +214,93 @@ def get_user_images(request, template='dropzone-drag-drop.html'):
 
     # figure out what RequestContext does, and how render_to_response takes its
     # arugments
-    return render_to_response(template, this_context, RequestContext(request))
+    return render_to_response('index.html', this_context, context_instance=RequestContext(request))
+################################################################################
+
+
+################################################################################
+import os
+import glob
+import fnmatch, re
+from django.conf import settings
+
+def GetUserImages(request):
+    
+    # path="static/media/user_dee-mann"  # insert the path to your directory   
+
+    image_string = str(glob.glob("*.jpg"))
+    base_dir_path = settings.BASE_DIR
+    img_list = os.path.join(os.path.dirname(base_dir_path),
+        "static", "media", "user_"+request.user.username+"/"+image_string)  
+    
+    # print "\n\n\n\nThis is using glob in GetUserImages" 
+    # print "this image_string value: %s" % image_string
+    # img_list = "user_"+request.user.username
+
+    return render_to_response('index.html', {'images': img_list})
+################################################################################
 
 
 
 
 
+################################################################################
 
+
+# this is the path to the links work for static and media
+# ^static\/(?P<path>.*)$
+# ^media\/(?P<path>.*)$
+
+################################################################################
 # def template_user_images():
 #     bits = token.split_contents()
+################################################################################
+
+
+    
+
+################################################################################
+# import os
+# from django.conf import settings
+# from annoying.decorators import ajax_request
+
+# @ajax_request
+# def json_images(request, dir_name):
+#     path = os.path.join(settings.MEDIA_ROOT, dir_name)
+#     images = []
+#     for f in os.listdir(path):
+#         if f.endswith("jpg") or f.endswith("png"): # to avoid other files
+#             images.append("%s%s/%s" % (settings.MEDIA_URL, dir_name, f)) # modify the concatenation to fit your neet
+#     return {'images': images}
+
+################################################################################
+
+
+
+
+################################################################################
+# views.py
+
+# import os 
+
+# def gallery(request):
+#     path="C:\\somedirectory"  # insert the path to your directory   
+#     img_list =os.listdir(path)   
+#     return render_to_response('gallery.html', {'images': img_list})
+
+# gallery.html
+
+# {% for image in images %}
+# <img src='/static/{{image}}' />
+# {% endfor %}
+################################################################################
 
 
 
 
 
 
+################################################################################
 # writting your own template tags
 # 
 # Start off by creating a folder called templatetags in your app directory and 
@@ -313,12 +418,13 @@ def get_user_images(request, template='dropzone-drag-drop.html'):
 # register.tag('books_for_object', books_for_object)
 # register.tag('book_form', book_form)
 # register.simple_tag(get_book_form_url) 
+################################################################################
 
 
 
 
 
-
+################################################################################
 # # this is on the HTML side
 # <h2>Books</h2>
 
@@ -345,3 +451,4 @@ def get_user_images(request, template='dropzone-drag-drop.html'):
 # {{ form }}
 # <input type="submit" value="Go" />
 # </form>
+################################################################################
