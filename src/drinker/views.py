@@ -117,22 +117,3 @@ def LoginRequest(request):
 def LogOutRequest(request):
     logout(request)
     return HttpResponseRedirect('/')
-
-
-
-# def indexer(request):
-#     # rendering the response, also make the thankyou.html document
-#     return render_to_response("index-image.html",
-#                               locals(),
-#                               context_instance=RequestContext(request))
-
-
-
-# def get_images(request):
-#     return
-
-
-# TA's suggestion
-# get_images function for the user 
-# def get_images
-# end

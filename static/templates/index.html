@@ -1,37 +1,91 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 {% load staticfiles %}
 
-	<!-- aggregate the list of images here -->
-    <!-- how does html read these from Django? -->
-    <!-- ul represents the unordered-list tag in HTML -->
-    
-    <h1> These are image objects {{ images }} </h1>
 
 
-	<!--  -->
-    <!-- <ul> -->
-    <!-- {% for image in images %} -->
-        <!-- <img src= "{{ MEDIA_URL }}/<custom template object/{{ images.url }}" /> -->
-        
-        <!-- MEDIA_URL = '/media/' -->
-		<!-- HERE IS AN EXAMPLE: -->
-    	<!-- <img src='{{ MEDIA_URL }}/files/2014/11/01/elvis-duck.JPG' /> -->
-		<!-- MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media") -->
-        <!-- MEDIA_ROOT = /static/media/ -->
 
-        <!-- <img src= "/media/<user.id>/"  -->
-        <!-- <img src ="{{ images.url }}" /> -->
-        
-    <!-- {% endfor %} -->
-    <!-- </ul> -->
-	<!--  -->
+<!-- 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+       
+        <button id="save">Load Picture</button>
+        <div id="loading"></div> 
 
-	{% for image in images %}
-		<img src="{{ images }}" />
+        <script>
+            // $('#save').click(function () {
+            //     // add loading image to div
+            //     $('#loading').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
+                
+                
+            //     // run ajax request
+            //     $.ajax({
+            //         type: "GET",
+            //         dataType: "json",
+            //         url: "https://api.github.com/users/jveldboom",
+            //         success: function (d) {
+            //             // replace div's content with returned data
+            //             // $('#loading').html('<img src="'+d.avatar_url+'"><br>'+d.login);
+            //             // setTimeout added to show loading
+            //             setTimeout(function () {
+            //                 $('#loading').html('<img src="' + d.avatar_url + '"><br>' + d.login);
+            //             }, 2000);
+            //         }
+            //     });
+            // });
+        </script>
+-->    
 
-		<!-- <img src="{{ MEDIA_URL }}{{ image }}" /> -->
-	{% endfor %}
+
+
+
+<style type="text/css">
+
+    .pic  img{
+
+    }
+
+    .focus img{
+     -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+     -o-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+     transition: all 1s ease; 
+    }
+    .focus img:hover{
+
+        -moz-box-shadow: 0 0 40px #272822; 
+        -webkit-box-shadow: 0 0 40px #272822; 
+        box-shadow: 0 0 40px #272822; 
+
+        /* this creates a cool effect where the picture floats */
+        position: relative;
+        float:;
+        margin:20px;
+
+        /*this is for the brightness*/
+        opacity: 0.8; /* good browsers */
+        filter: alpha(opacity=80); /* ye 'old IE */
+
+
+    }
+
+    .focus img:active{
+        /*this is for the brightness*/
+        opacity: 0.8; /* good browsers */
+        filter: alpha(opacity=80); /* ye 'old IE */ 
+    }
+
+</style>    
+
+
+<div class="show-image focus pic ">
+    {% for image in images %}
+        <img src="/media/{{ image.file.name }}" />
+    {% endfor %}
+</div>
+
 
 {% endblock %}

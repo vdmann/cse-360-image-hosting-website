@@ -213,28 +213,13 @@
     <div class="show-image focus pic ">
 
 
-    <!-- MEDIA_URL = '/media/'     -->
-    <!-- using Django's tag feature? -->
-    <img src='{{ MEDIA_URL }}/files/2014/11/01/elvis-duck.JPG' />
-
+    <!-- <h1> These are image objects {{ images }} </h1> -->
     {% for image in images %}
-        <img src='{{ image }}' />
+        <img src="/media/{{ image.file.name }}" />
     {% endfor %}
 
-    <!-- how does html read these from Django? -->
-    <!-- ul represents the unordered-list tag in HTML -->
-    <!-- <ul> -->
-    <!-- {% for image in this_context %} -->
-        <!-- <img src= "{{ MEDIA_URL }}/<custom template object/{{ images.url }}" /> -->
-        <!-- <img src ="{{ images.url }}" /> -->
 
-    <!-- {% endfor %} -->
-    <!-- </ul> -->
 
-    <!-- we need to request a user -->
-  <!--   {% for product in products %}
-        <img src="/media/{{ product.image }}/" />
-    {% endfor %} -->
 
 
     <script type="text/javascript">
@@ -244,10 +229,10 @@
         // need a for-loop to initialize the pictures dynamically we will have to 
         // deliminate the strings by "users + photos"
         imgArray[0] = new Image();
-        imgArray[0].src = '/media/files/2014/11/01/elvis-duck.JPG';
+        // imgArray[0].src = '/media/files/2014/11/01/elvis-duck.JPG';
 
         imgArray[2] = new Image();
-        imgArray[2].src = '/media/files/2014/11/01/rubber-duck.jpg';
+        // imgArray[2].src = '/media/files/2014/11/01/rubber-duck.jpg';
 
         /* ... more images ... */
 

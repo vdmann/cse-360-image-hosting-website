@@ -5,10 +5,7 @@ from django.contrib.auth.models import User
 
 class Drinker(models.Model):
 	user    = models.OneToOneField(User)
-	# user    = models.ForeignKey(User, unique=True)
-	# user    = models.ForeignKey(User)
 	name    = models.CharField(max_length=100)
-	# file    = models.FileField(upload_to=get_upload_path)
 
 	def __unicode__(self):
 		return self.name
