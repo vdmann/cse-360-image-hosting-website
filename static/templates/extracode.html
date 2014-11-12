@@ -1,0 +1,143 @@
+<!-- FROM dropzon-drag-drop -->
+
+
+
+
+
+
+<!--     
+    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media") -->
+
+    <!-- {% load staticfiles %} -->
+    <!-- <img src="{% static "media/user_123/elvis-duck.JPG" %}" alt="My image"/> -->
+
+
+    <!-- <img src="{{ MEDIA_ROOT }}/user_123/elvis-duck.JPG"/> -->
+
+    <!-- <img src='/media/user_123/elvis-duck.JPG' alt="my images"/> -->
+
+
+
+
+
+
+
+<!--
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+       
+        <button id="save">Load Picture</button>
+        <div id="loading"></div>
+
+        <script>
+            // $('#save').click(function () {
+            //     // add loading image to div
+            //     $('#loading').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
+                
+                
+            //     // run ajax request
+            //     $.ajax({
+            //         type: "GET",
+            //         dataType: "json",
+            //         url: "https://api.github.com/users/jveldboom",
+            //         success: function (d) {
+            //             // replace div's content with returned data
+            //             // $('#loading').html('<img src="'+d.avatar_url+'"><br>'+d.login);
+            //             // setTimeout added to show loading
+            //             setTimeout(function () {
+            //                 $('#loading').html('<img src="' + d.avatar_url + '"><br>' + d.login);
+            //             }, 2000);
+            //         }
+            //     });
+            // });
+        </script>
+    -->
+
+
+
+<!--
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <div id="appendlist"></div> 
+        <script type="text/javascript">
+             
+                var dir = "static/media/files/2014/01/";
+                var fileextension = ".JPG";
+
+                // "$" means that it is a Jquery object
+                $.ajax({   
+
+                    //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+                    url: dir,
+                
+                    success: function (data) {
+
+                        console.log('success', data);
+
+                        //Lsit all png file names in the page
+                        $(data).find("a:contains(" + fileextension + ")").each(function () 
+                        {
+                            // this is replacing the file name?
+                            var filename = this.href.replace(window.location.host, "").replace("http:///", "");
+                            $("#appendlist").append($("<img src=" + dir + filename + "></img>"));                            
+                        });
+                    }
+                });
+        </script>
+
+
+    -->
+
+
+<!-- THIS IS ANOTHER EXAMPLE OF THE CODE ABOVE
+<script type="text/javascript">
+$(document).ready(function(){
+    // var dir = “static/media/files/2014/01/”;
+    var dir = “images/”;
+    var fileextension=”.jpg”;
+    $.ajax({
+    //This will retrieve the contents of the folder if the folder is configured as ‘browsable’
+        url: dir,
+        success: function (data) {
+            //Lsit all png file names in the page
+            $(data).find(“a:contains(” + fileextension + “)”).each(function () 
+            {
+                var filename = this.href.replace(window.location.host, “”).replace(“http:///”,”");
+                $(“#view”).append($(“”));
+            });
+        }
+        });
+    })
+</script>
+-->
+
+
+
+
+<!-- This is an example of displaying images -->
+        <!-- figur out a way to retrieve the image files after the dropzone
+        has uploaded to the static->media files -->
+
+        <!-- Image Focusing, probably will need to a put this into a custom css 
+        file and call it -->
+
+
+
+
+
+    <!-- WE DO NOT WANT TO HARDCODE THIS! What we can do is use a for loop
+    to iterate through a list of images (TA's suggestion)-->
+    <!-- this is div with multiple classes -->
+<!--     <div class="show-image focus pic">
+        <img src="/media/files/2014/11/01/elvis-duck.JPG" />            
+        <input class="the-buttons" type="button" value=" Edit " />
+    </div> -->
+
+
+
+
+
+<!-- TEST -->
+
+
+
+

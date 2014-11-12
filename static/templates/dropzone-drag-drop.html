@@ -2,115 +2,109 @@
 
 {% block content %}
 
-       
-        <!-- Is {% load staticfiles %} always called once? -->
-        {% load staticfiles %}
+
+<!-- Is {% load staticfiles %} always called once? -->
+{% load staticfiles %}
+
 
         <!-- 
         HTML and Django, Managing static files
         
         importing the dropzone.css file to use the dropzone class in the css
         file 
-        -->
-        <link href="{% static 'dragdrop/css/dropzone.css' %}" type="text/css" rel="stylesheet"/>
+    -->
+    <link href="{% static 'dragdrop/css/dropzone.css' %}" type="text/css" rel="stylesheet"/>
 
 
-        
+
+    <!--  -->
+    <form class="dropzone" action="{% url "dragdrop:DraggingAndDropping" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <!--  -->
-        <form class="dropzone" action="{% url "dragdrop:DraggingAndDropping" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-        </form>
+        {{ form.as_p }}
+    </form>
 
-       
-        <button id="submit-all">
-            Submit all files
-        </button>
- 
-        <script src="{% static 'dragdrop/js/dropzone.js' %}"></script>
-        <script type="text/javascript">
+
+    <button id="submit-all">
+        Submit all files
+    </button>
+
+    <script src="{% static 'dragdrop/js/dropzone.js' %}"></script>
+    <script type="text/javascript">
+
+        // not sure what this does
+        Dropzone.options.myDropzone = {
+
+            // Prevents Dropzone from uploading dropped files immediately
+            autoProcessQueue : false,
 
             // not sure what this does
-            Dropzone.options.myDropzone = {
- 
-                // Prevents Dropzone from uploading dropped files immediately
-                autoProcessQueue : false,
- 
+            init : function() {
+
                 // not sure what this does
-                init : function() {
+                var submitButton = document.querySelector("#submit-all")
+                myDropzone = this;
 
-                    // not sure what this does
-                    var submitButton = document.querySelector("#submit-all")
-                    myDropzone = this;
- 
-                    submitButton.addEventListener("click", function() {
-                        myDropzone.processQueue();
-                        // Tell Dropzone to process all queued files.
-                    });
- 
-                    // You might want to show the submit button only when
-                    // files are dropped here:
-                    this.on("addedfile", function() {
-                        // Show submit button here and/or inform user to click it.
-                    });
- 
-                }
-            };
+                submitButton.addEventListener("click", function() {
+                    myDropzone.processQueue();
+                    // Tell Dropzone to process all queued files.
+                });
 
-        </script>
+                // You might want to show the submit button only when
+                // files are dropped here:
+                this.on("addedfile", function() {
+                    // Show submit button here and/or inform user to click it.
+                });
+
+            }
+        };
+
+    </script>
 
 
 
+<!-- customized navbar only when the user logins, which gives the user to logout -->
+  <!--  -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Image-Hosting Website</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!-- this creates the button for logging out -->
+           <form class="navbar-form navbar-right" role="form" method="get" action="/logout/">
+               
+                  <!-- trying to get the logout button to work :/ -->
+                <!-- <form method="get" action="/logout/"> {% csrf_token %} -->
+                  <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="Logout">
+                <!-- </form> -->
 
+                <!-- this is the logout button -->
+   <!--              <form method="get" action="logout.html"> {% csrf_token %}
+                  <input type="submit" class='btn btn-success btn-block' value="Logout">
+                </form> -->
 
+            <!-- <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button> 
+           -->
 
+          <!-- </form> -->
 
-<!--     
-    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media") -->
-
-    <!-- {% load staticfiles %} -->
-    <!-- <img src="{% static "media/user_123/elvis-duck.JPG" %}" alt="My image"/> -->
-
-     
-    <!-- <img src="{{ MEDIA_ROOT }}/user_123/elvis-duck.JPG"/> -->
-
-    <!-- <img src='/media/user_123/elvis-duck.JPG' alt="my images"/> -->
-
-
-
-
-
-
-
-<!--
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-        <script src="http://malsup.github.com/jquery.form.js"></script>
-       
-        <button id="save">Load Picture</button>
-        <div id="loading"></div>
-
-        <script>
-            // $('#save').click(function () {
-            //     // add loading image to div
-            //     $('#loading').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
-                
-                
-            //     // run ajax request
-            //     $.ajax({
-            //         type: "GET",
-            //         dataType: "json",
-            //         url: "https://api.github.com/users/jveldboom",
-            //         success: function (d) {
-            //             // replace div's content with returned data
-            //             // $('#loading').html('<img src="'+d.avatar_url+'"><br>'+d.login);
-            //             // setTimeout added to show loading
-            //             setTimeout(function () {
-            //                 $('#loading').html('<img src="' + d.avatar_url + '"><br>' + d.login);
-            //             }, 2000);
-            //         }
-            //     });
-            // });
-        </script>
--->
+        </div> <!--/.navbar-collapse -->
+      </div>
+    </div>
+<!--  -->
 
 
 
@@ -118,161 +112,91 @@
 
 
 
+    <form action="" mehtod="post"> 
         <div id="updatePageWithImage"><h2>This button updates the images dynamically</h2></div>
         <button type="button" onclick="displayImages()">Update</button>
 
+        <!-- creating buttons using forms -->
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Redirects To Another Page" />
+    </form>
 
 
 
 
-
-<!--
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <div id="appendlist"></div> 
-        <script type="text/javascript">
-             
-                var dir = "static/media/files/2014/01/";
-                var fileextension = ".JPG";
-
-                // "$" means that it is a Jquery object
-                $.ajax({   
-
-                    //This will retrieve the contents of the folder if the folder is configured as 'browsable'
-                    url: dir,
-                
-                    success: function (data) {
-
-                        console.log('success', data);
-
-                        //Lsit all png file names in the page
-                        $(data).find("a:contains(" + fileextension + ")").each(function () 
-                        {
-                            // this is replacing the file name?
-                            var filename = this.href.replace(window.location.host, "").replace("http:///", "");
-                            $("#appendlist").append($("<img src=" + dir + filename + "></img>"));                            
-                        });
-                    }
-                });
-        </script>
+    <style type="text/css">
+            .pic  img{
 
 
--->
+            }
 
-
-<!-- THIS IS ANOTHER EXAMPLE OF THE CODE ABOVE
-<script type="text/javascript">
-$(document).ready(function(){
-    // var dir = “static/media/files/2014/01/”;
-    var dir = “images/”;
-    var fileextension=”.jpg”;
-    $.ajax({
-    //This will retrieve the contents of the folder if the folder is configured as ‘browsable’
-        url: dir,
-        success: function (data) {
-            //Lsit all png file names in the page
-            $(data).find(“a:contains(” + fileextension + “)”).each(function () 
-            {
-                var filename = this.href.replace(window.location.host, “”).replace(“http:///”,”");
-                $(“#view”).append($(“”));
-            });
-        }
-        });
-    })
-</script>
--->
-
-
-
-
-        <!-- This is an example of displaying images -->
-        <!-- figur out a way to retrieve the image files after the dropzone
-        has uploaded to the static->media files -->
-    
-        <!-- Image Focusing, probably will need to a put this into a custom css 
-        file and call it -->
-        <style type="text/css">
-        .pic  img{
-
-
-                }
-       
-        .focus img{
+            .focus img{
                -webkit-transition: all 1s ease;
                -moz-transition: all 1s ease;
                -o-transition: all 1s ease;
                -ms-transition: all 1s ease;
-                transition: all 1s ease; 
-               }
-        .focus img:hover{
+               transition: all 1s ease; 
+           }
+           .focus img:hover{
 
-                -moz-box-shadow: 0 0 40px #272822; 
-                -webkit-box-shadow: 0 0 40px #272822; 
-                box-shadow: 0 0 40px #272822; 
+            -moz-box-shadow: 0 0 40px #272822; 
+            -webkit-box-shadow: 0 0 40px #272822; 
+            box-shadow: 0 0 40px #272822; 
 
-                /* this creates a cool effect where the picture floats */
-                position: relative;
-                float:;
-                margin:20px;
-               
-                /*this is for the brightness*/
-                opacity: 0.8; /* good browsers */
-                filter: alpha(opacity=80); /* ye 'old IE */
+            /* this creates a cool effect where the picture floats */
+            position: relative;
+            float:;
+            margin:20px;
+
+            /*this is for the brightness*/
+            opacity: 0.8; /* good browsers */
+            filter: alpha(opacity=80); /* ye 'old IE */
 
 
-               }
+        }
 
         .focus img:active{
-                /*this is for the brightness*/
-                opacity: 0.8; /* good browsers */
-                filter: alpha(opacity=80); /* ye 'old IE */ 
+            /*this is for the brightness*/
+            opacity: 0.8; /* good browsers */
+            filter: alpha(opacity=80); /* ye 'old IE */ 
         }
 
 
-        </style>
-
-
-
-
-    <!-- WE DO NOT WANT TO HARDCODE THIS! What we can do is use a for loop
-    to iterate through a list of images (TA's suggestion)-->
-    <!-- this is div with multiple classes -->
-<!--     <div class="show-image focus pic">
-        <img src="/media/files/2014/11/01/elvis-duck.JPG" />            
-        <input class="the-buttons" type="button" value=" Edit " />
-    </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </style>    
 
 
 
 
     <div class="show-image focus pic ">
 
+    <!-- from managing static files (CSS, images) -->
 
-    {% for image in images %}
-        <!-- <img src='{{ MEDIA_URL }}/user_123/{{image}}'/> -->
-    {% endfor %}
+
 
     <!-- MEDIA_URL = '/media/'     -->
-    <img src='{{ MEDIA_URL }}/files/2014/11/01/elvis-duck.JPG'/>
+    <!-- using Django's tag feature? -->
+    <img src='{{ MEDIA_URL }}/files/2014/11/01/elvis-duck.JPG' />
 
 
+    <!-- how does django for-loop work? -->
+    <!-- how does html read these from Django? -->
+    <!-- ul represents the unordered-list tag in HTML -->
+    <ul>
+    {% for image in images %}
+        <img src= "{{ images.url }}" />
+    {% endfor %}
+    </ul>
 
+    <!-- we need to request a user -->
+    {% for product in products %}
+        <img src="/media/{{ product.image }}/" />
+    {% endfor %}
 
 
     <script type="text/javascript">
+
         var imgArray = new Array();
 
         // need a for-loop to initialize the pictures dynamically we will have to 
@@ -306,8 +230,8 @@ $(document).ready(function(){
              // $("#cf_onclick").click(function() {
 
              // }
-            
-            image.onclick = function(event) {
+
+             image.onclick = function(event) {
             //     // this is a test 
             //     // we can possibly put a filter for this onClick event picture
             //     // 
@@ -319,9 +243,9 @@ $(document).ready(function(){
             //     // this redirects me to a different page
             //     // window.location.href = this.id + '.html';
             //     // this should react to the edit a button          
-            };
-        }
+        };
+    }
     </script>
-    </div>
+</div>
 
 {% endblock %}

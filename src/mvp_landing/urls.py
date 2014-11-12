@@ -12,6 +12,19 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # remember that that any url entity that contains include linked from
+    # another app should always be added here first as a priority since this can
+    # cause collision with other url configurations if it were to be added in
+    # the middle of the list or end of the list for example. 
+    #  this includes the urls for the django admin page
+    url(r'^admin/', include(admin.site.urls)),
+
+    # what does namepsace, and app_name mean, how does the functionality work?
+    url(r'^dropzone-drag-drop/$', include('dragdrop.urls', namespace="dragdrop", app_name="dragdrop")),   
+    
     
     # url(r'^index/$', direct_to_template, 
     #                  { 'template':'index.html', 'extra_context': {'files':list_all_images} }
@@ -33,7 +46,6 @@ urlpatterns = patterns('',
     # functionality
     # url(r'^about-us/$', 'signups.views.aboutus', name='aboutus'),
     # the admin parameter behavoir wouldnt change so if you change "admin" to "adminabc" it would still link to the admin page
-    url(r'^admin/', include(admin.site.urls)),
     # for register.html 
     url(r'^register/$', 'drinker.views.DrinkerRegistration'),
     url(r'^login/$', 'drinker.views.LoginRequest'),
@@ -48,7 +60,6 @@ urlpatterns = patterns('',
 
     # url(r'^index/$', 'dragdrop.views.get_images'),
     # url(r'^index/$', 'dragdrop.views.get_image'),
-    url(r'^dropzone-drag-drop/$', include('dragdrop.urls', namespace="dragdrop", app_name="dragdrop")),   
     
     # url(r'^image-upload/$', 'upload_image.views.indexer'),
 

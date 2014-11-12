@@ -48,6 +48,9 @@ ALLOWED_HOSTS = []
 # provide our get_profile()
 # provides authentication to the Django backend
 AUTH_PROFILE_MODULE = 'drinker.Drinker'
+# this is for the dragdrop images
+# AUTH_USER_MODEL = 'auth.User'
+
 
 # Application definition
 INSTALLED_APPS = (

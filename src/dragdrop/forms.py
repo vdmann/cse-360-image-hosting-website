@@ -1,6 +1,7 @@
 from django import forms
 from dragdrop.models import UploadFile
- 
+
+################################################################################  
 # a little intuition on forms.ModelForm
 # 
 # ModelForms render Model fields as HTML.
@@ -16,7 +17,7 @@ from dragdrop.models import UploadFile
 # 	object into a binary representation. 
 # 	
 # Forms validate Python dictionaries. (covered previous)
-# 
+################################################################################ 
 class UploadFileForm(forms.ModelForm):
 
     class Meta:

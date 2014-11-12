@@ -1,15 +1,15 @@
-import random, string
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
-
 from django.db import models
 
+# am I importing these session libraries correctly?
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.cached_db import SessionStore
 from django.contrib.sessions.backends.db import SessionStore
 
-from importlib import import_module
 from django.conf import settings
+import random, string
+from importlib import import_module
 
 
 
@@ -71,11 +71,3 @@ def get_path(instance, filename):
     # return "%s/%s/%s.%s" % (dir, name, extension)
     
     return "%s/%s.%s" % (dir, filename, extension)
-
-
-# from dragdrop.views import DraggingAndDropping
-# import os
-
-# def get_upload_path(instance, filename):
-#     return os.path.join(
-#       "user_%d" % instance.owner.id, "car_%s" % instance.slug, filename)
