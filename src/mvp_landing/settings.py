@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     # this is the django ajax dynamic upload feature
     # 'upload_image',
     # 'fileupload',
+    'filter',
 )
 
 # for PHP
