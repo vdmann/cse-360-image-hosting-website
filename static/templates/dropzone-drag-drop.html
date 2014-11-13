@@ -81,28 +81,12 @@
         <div class="navbar-collapse collapse">
             <!-- this creates the button for logging out -->
            <form class="navbar-form navbar-right" role="form" method="get" action="/logout/">
-               
-                  <!-- trying to get the logout button to work :/ -->
-                <!-- <form method="get" action="/logout/"> {% csrf_token %} -->
-                  <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="Logout">
-                <!-- </form> -->
-
-                <!-- this is the logout button -->
-   <!--              <form method="get" action="logout.html"> {% csrf_token %}
-                  <input type="submit" class='btn btn-success btn-block' value="Logout">
-                </form> -->
-
-            <!-- <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button> 
-           -->
-
-          <!-- </form> -->
-
+               <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="Logout">
+           </form>
+            <!-- this button redirects users to the list of images -->
+           <form class="navbar-form navbar-right" role="form" method="get" action="/index/">
+                <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="My Pictures">
+           </form>
         </div> <!--/.navbar-collapse -->
       </div>
     </div>
@@ -214,9 +198,9 @@
 
 
     <!-- <h1> These are image objects {{ images }} </h1> -->
-    {% for image in images %}
+<!--     {% for image in images %}
         <img src="/media/{{ image.file.name }}" />
-    {% endfor %}
+    {% endfor %} -->
 
 
 
@@ -228,10 +212,10 @@
 
         // need a for-loop to initialize the pictures dynamically we will have to 
         // deliminate the strings by "users + photos"
-        imgArray[0] = new Image();
+        // imgArray[0] = new Image();
         // imgArray[0].src = '/media/files/2014/11/01/elvis-duck.JPG';
 
-        imgArray[2] = new Image();
+        // imgArray[2] = new Image();
         // imgArray[2].src = '/media/files/2014/11/01/rubber-duck.jpg';
 
         /* ... more images ... */

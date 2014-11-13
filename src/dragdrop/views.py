@@ -170,7 +170,6 @@ def GetUserImages(request):
     # print "this is the user_id value: %s" request.user.id
     # print "this is the file from the user: %s " % request.user.file
     all_images = UploadFile.objects.all().filter(user_id=request.user.id)
-    # user_images = User.objects.get(pk=all_images['id_file'])
     print "these are all_images: %s" % all_images
 
     # Python dictionaries are also known as associative arrays or hash tables. 
@@ -180,7 +179,6 @@ def GetUserImages(request):
         'user': request.user
     }
 
-    # arugments
     return render_to_response('index.html', this_context, context_instance=RequestContext(request))
 
 
