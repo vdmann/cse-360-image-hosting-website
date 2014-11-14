@@ -27,7 +27,9 @@ SECRET_KEY = 'faiik0n61x)+=8m&z-o())ifijj(mii31+28_1xg_cb%td1*%3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # for when we want to find errors.
-DEBUG = True
+DEBUG = True 
+
+TEST = True
 
 TEMPLATE_DEBUG = DEBUG
 #TEMPLATE_DEBUG = True
@@ -163,20 +165,20 @@ DATABASES = {
     'default': {
         # sqlite3 automatically generates tables using these two statements
         # not reccommended for live deployment
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         #'USER':'',
         #'PASSWORD':'', 
         #'HOST':'',
         #'PORT':'',
             
         # were using MySQL instead
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'mvp_landing_db',
-        #'USER': 'mvpland',
-        #'PASSWORD': '1293819318930JDSIOAJD!@#$*',
-        #'HOST': 'mysql.server',   # Or an IP Address that your DB is hosted on
-        #'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'mydb_user',
+        'PASSWORD': 'your_password',
+        'HOST': '',   # Or an IP Address that your DB is hosted on
+        'PORT': '',
     }
 }
 

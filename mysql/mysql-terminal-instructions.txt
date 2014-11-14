@@ -1,0 +1,17 @@
+// problems here
+(skillshare)dee-mann@deemann-MacBookPro:~/Desktop/project-4/skillshare/mysql$ sudo service mysql startstart: Job is already running: mysql
+(skillshare)dee-mann@deemann-MacBookPro:~/Desktop/project-4/skillshare/mysql$ sudo mysqld --skip-grant-tables
+
+(skillshare)dee-mann@deemann-MacBookPro:~/Desktop/project-4/skillshare$ sudo mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+
+
+// this changes the user's root password, which will prompt the pink screen in
+// terminal
+sudo dpkg-reconfigure mysql-server-5.5
+
+// running the script file from our skillshare->mysql->script.sql source path
+// the source path may need to be changed if working on a different system
+mysql> source '/home/dee-mann/Desktop/project-4/skillshare/mysql/script.sql';
