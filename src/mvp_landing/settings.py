@@ -165,20 +165,20 @@ DATABASES = {
     'default': {
         # sqlite3 automatically generates tables using these two statements
         # not reccommended for live deployment
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         #'USER':'',
         #'PASSWORD':'', 
         #'HOST':'',
         #'PORT':'',
             
         # were using MySQL instead
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydb',
-        'USER': 'mydb_user',
-        'PASSWORD': 'your_password',
-        'HOST': '',   # Or an IP Address that your DB is hosted on
-        'PORT': '',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'mydb',
+        # 'USER': 'mydb_user',
+        # 'PASSWORD': 'your_password',
+        # 'HOST': '',   # Or an IP Address that your DB is hosted on
+        # 'PORT': '',
     }
 }
 
