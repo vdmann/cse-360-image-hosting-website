@@ -29,6 +29,7 @@ SECRET_KEY = 'faiik0n61x)+=8m&z-o())ifijj(mii31+28_1xg_cb%td1*%3'
 # for when we want to find errors.
 DEBUG = True 
 
+# not sure if I actually need this line of code for the MySQL database
 TEST = True
 
 TEMPLATE_DEBUG = DEBUG
@@ -54,6 +55,11 @@ AUTH_PROFILE_MODULE = 'drinker.Drinker'
 # AUTH_USER_MODEL = 'auth.User'
 
 
+# this is for Varnish caching for HTTP acceleration
+VANRISH_WATCHED_MODELS = 'auth.user','drinker.Drinker'
+VARNISH_MANAGEMENT_ADDRS = 'server1:6082', 'server2:6082'
+
+
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -65,43 +71,21 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
      # this is for django-photologue
     'django.contrib.sites',
-
     # my apps
     # 'signups',
     'drinker',
     'dragdrop',
-       
-    # this is for django-photologue
-    # 'photologue',
-    # 'sortedm2m',
     'south', # Only if you're relying on South for migrations
-    # 'photologue_custom',
-    # 'taggit',
-
-    # this is for django-imagekit
-    # this app was built using pip install django-imagekit, thats why we do not
-    # see a dedicated app folder
     'imagekit',
-
-    # this is for django-photo-albums
-    # 'generic_images',
     'annoying',
-    # 'photo_albums',
-
     # using ajax, this can possibly make things slightly easier
     # with images
     # 'django_ajax',
-
-    # using PHP in Django
-    # 'django_php',
-    
-    # this is the django ajax dynamic upload feature
-    # 'upload_image',
-    # 'fileupload',
     'filter',
+    'storages',
+    'varnishapp',
 )
 
 # for PHP
@@ -128,6 +112,20 @@ SOUTH_MIGRATION_MODULES = {
 # written to the database. Session reads only use the database if the data is 
 # not already in the cache.
 # 
+
+# this is for Django's memcache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            '172.19.26.240:11211',
+            '172.19.26.242:11212',
+            '172.19.26.244:11213',
+        ]
+    }
+}
+
+
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db" 
 
 # using file-based sessions
@@ -179,6 +177,14 @@ DATABASES = {
         # 'PASSWORD': 'your_password',
         # 'HOST': '',   # Or an IP Address that your DB is hosted on
         # 'PORT': '',
+        
+        # this is for PostgreSQL
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'django_db',                      
+        # 'USER': 'django_login',                   
+        # 'PASSWORD': 'your_password',              
+        # 'HOST': 'localhost',                      
+        # 'PORT': '5432', 
     }
 }
 
@@ -245,3 +251,13 @@ if DEBUG:
     STATICFILES_DIRS = (
         os.path.join(os.path.dirname(BASE_DIR), 'static', 'static'),
     )
+
+
+# this is for Rackspace for when we deploy it on the cloud
+# CLOUDFILES_USERNAME = 'YourUsername'
+# CLOUDFILES_API_KEY = 'YourAPIKey'
+# CLOUDFILES_CONTAINER = 'ContainerName'
+# DEFAULT_FILE_STORAGE = 'backends.mosso.CloudFilesStorage'
+
+# Optional - use SSL
+# CLOUDFILES_SSL = True

@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<!-- not sure if caching works here -->
 
 <!-- Is {% load staticfiles %} always called once? -->
 {% load staticfiles %}
@@ -24,11 +25,12 @@
         {{ form.as_p }}
     </form>
 
-
+    <!-- The submit button does not work -->
+<!--
     <button id="submit-all">
         Submit all files
     </button>
-
+-->
     <script src="{% static 'dragdrop/js/dropzone.js' %}"></script>
     <script type="text/javascript">
 
@@ -196,14 +198,10 @@
 
     <div class="show-image focus pic ">
 
-
-    <!-- <h1> These are image objects {{ images }} </h1> -->
+    <!-- we can use ajax here, to dynamically load up our pictures -->
 <!--     {% for image in images %}
         <img src="/media/{{ image.file.name }}" />
     {% endfor %} -->
-
-
-
 
 
     <script type="text/javascript">

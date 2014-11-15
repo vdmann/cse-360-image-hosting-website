@@ -4,6 +4,9 @@
 
 {% load staticfiles %}
 
+<!-- loading the template caching here -->
+{% load cache %}
+{% cache 500 sidebar %}
 
 
 <!--  
@@ -118,5 +121,6 @@
     {% endfor %}
 </div>
 
+{% endcache %}
 
 {% endblock %}

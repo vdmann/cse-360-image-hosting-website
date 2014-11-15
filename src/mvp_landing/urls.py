@@ -77,6 +77,8 @@ urlpatterns = patterns('',
     # url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     # url(r'^index/$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     
+    # not sure if I need an actual url wrapper in this code. 
+    url(r'^admin/varnish/', include('varnishapp.urls')),
 
 )
 
