@@ -84,6 +84,7 @@ INSTALLED_APPS = (
     'filter',
     'storages',
     'varnishapp',
+    'lettuce.django',
 )
 
 # for PHP
