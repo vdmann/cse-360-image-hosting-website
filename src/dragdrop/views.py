@@ -10,7 +10,12 @@ from django.conf import settings
 from .forms import UploadFileForm
 from .models import UploadFile
 
-# passes an HttpRequest through DraggingAndDropping
+# scaling django by using caching for scaling
+from django.views.decorators.cache import cache_page
+
+# That will allow that view to be cached for 60 minutes (60 seconds * 60 minutes).
+# @cache_page(60 * 60)
+# @cache_page(60)
 def DraggingAndDropping(request):
     # this if statement uses a HttpRequest.method, POST - submits data to be
     # processed to a specified resource 
@@ -156,7 +161,7 @@ def DraggingAndDropping(request):
     # return render_to_response('index.html', {'pictures': pictures, 'form': form}, context_instance=RequestContext(request))
 
 
-
+# @cache_page(60)
 def GetUserImages(request):
 
     # not sure if this works with Dropzone UploadFile class model 

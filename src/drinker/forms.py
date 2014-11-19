@@ -6,7 +6,6 @@ from django.forms import ModelForm
 from drinker.models import Drinker
 
 
-
 class RegistrationForm(ModelForm):
     # u' <-- is the unicode string
     username    = forms.CharField(label=(u'User Name'))

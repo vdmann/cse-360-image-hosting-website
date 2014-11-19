@@ -4,13 +4,11 @@
 
 {% load staticfiles %}
 
-<!-- loading the template caching here -->
-{% load cache %}
-{% cache 500 sidebar %}
+<!-- loading the template caching here, it seems like this slows down the listed
+uploaded pictures -->
 
 
 <!--  
- 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
         <script src="http://malsup.github.com/jquery.form.js"></script>
        
@@ -57,7 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Image-Hosting Website</a>
+          <a class="navbar-brand" href="#"><img id="profilepic" src='/media/test-images/rubber-color-duck.jpg'/>{{ user.get_username }}</a>
         </div>
         <div class="navbar-collapse collapse">
             <!-- this creates the button for logging out -->
@@ -111,7 +109,6 @@
         opacity: 0.8; /* good browsers */
         filter: alpha(opacity=80); /* ye 'old IE */ 
     }
-
 </style>    
 
 
@@ -121,6 +118,6 @@
     {% endfor %}
 </div>
 
-{% endcache %}
+
 
 {% endblock %}

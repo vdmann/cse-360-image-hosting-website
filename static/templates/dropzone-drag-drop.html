@@ -78,7 +78,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Image-Hosting Website</a>
+          <a class="navbar-brand" href="#"><img id="profilepic" src='/media/test-images/rubber-color-duck.jpg'/>{{ user.get_username }}</a>
         </div>
         <div class="navbar-collapse collapse">
             <!-- this creates the button for logging out -->
@@ -95,12 +95,12 @@
 <!--  -->
 
 
-
-
-
-
-
-
+<!-- This is a display for our user's name -->
+<!-- {% if user.is_authenticated %}
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %} -->
 
 
 
@@ -241,6 +241,8 @@
              // }
 
              image.onclick = function(event) {
+                // redirect to different filter 
+
             //     // this is a test 
             //     // we can possibly put a filter for this onClick event picture
             //     // 

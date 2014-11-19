@@ -53,6 +53,7 @@ urlpatterns = patterns('',
     url(r'^register/$', 'drinker.views.DrinkerRegistration'),
     url(r'^login/$', 'drinker.views.LoginRequest'),
     url(r'^logout/$', 'drinker.views.LogOutRequest'),
+    url(r'^filter/$', 'filter.views.changeBright'),
 
     # work in progress
     # attempting to add security for profile page

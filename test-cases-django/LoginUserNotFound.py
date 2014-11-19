@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
-class LoginSingleUpload(unittest.TestCase):
+class LoginUserNotFound(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -15,19 +15,15 @@ class LoginSingleUpload(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    # testing is an iterative process so we can not test it directly at the
-    # upload page
-    def test_login_single_upload(self):
+    def test_login_user_not_found(self):
         driver = self.driver
-        driver.get(self.base_url)
-        # driver.get(self.base_url + "/")
+        driver.get(self.base_url + "/")
         driver.find_element_by_xpath("//input[@value='Login']").click()
         driver.find_element_by_id("id_username").clear()
-        driver.find_element_by_id("id_username").send_keys("dummy")
+        driver.find_element_by_id("id_username").send_keys("asdsada")
         driver.find_element_by_id("id_password").clear()
-        driver.find_element_by_id("id_password").send_keys("123")
+        driver.find_element_by_id("id_password").send_keys("asdada")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
-        # ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

@@ -55,9 +55,7 @@ AUTH_PROFILE_MODULE = 'drinker.Drinker'
 # AUTH_USER_MODEL = 'auth.User'
 
 
-# this is for Varnish caching for HTTP acceleration
-VANRISH_WATCHED_MODELS = 'auth.user','drinker.Drinker'
-VARNISH_MANAGEMENT_ADDRS = 'server1:6082', 'server2:6082'
+
 
 
 # Application definition
@@ -113,17 +111,6 @@ SOUTH_MIGRATION_MODULES = {
 # not already in the cache.
 # 
 
-# this is for Django's memcache
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': [
-            '172.19.26.240:11211',
-            '172.19.26.242:11212',
-            '172.19.26.244:11213',
-        ]
-    }
-}
 
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db" 
@@ -254,10 +241,50 @@ if DEBUG:
 
 
 # this is for Rackspace for when we deploy it on the cloud
-# CLOUDFILES_USERNAME = 'YourUsername'
-# CLOUDFILES_API_KEY = 'YourAPIKey'
-# CLOUDFILES_CONTAINER = 'ContainerName'
+# CLOUDFILES_USERNAME = 'pnorman'
+# CLOUDFILES_API_KEY = 'dcaee6c3f989850ceeb61eaa8ea15637'
+# CLOUDFILES_CONTAINER = 'imageproject'
 # DEFAULT_FILE_STORAGE = 'backends.mosso.CloudFilesStorage'
 
-# Optional - use SSL
+# Optional - use SSL, requires HTTPS
 # CLOUDFILES_SSL = True
+
+
+
+# this is for Django's memcache
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': [
+#             '172.19.26.240:11211',
+#             '172.19.26.242:11212',
+#             '172.19.26.244:11213',
+#         ]
+#     }
+# }
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'cache_table',
+#     }
+# }
+
+# In this example, a filesystem backend is being configured with a timeout of 60 
+# seconds, and a maximum capacity of 1000 items:
+# 
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION': '/var/tmp/django_cache',
+#         'TIMEOUT': 60,
+#         'OPTIONS': {
+#             'MAX_ENTRIES': 1000
+#         }
+#     }
+# }
+
+
+# this is for Varnish caching for HTTP acceleration
+VANRISH_WATCHED_MODELS = 'auth.user','drinker.Drinker'
+VARNISH_MANAGEMENT_ADDRS = 'server1:6082', 'server2:6082'

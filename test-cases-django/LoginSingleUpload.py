@@ -15,12 +15,9 @@ class LoginSingleUpload(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    # testing is an iterative process so we can not test it directly at the
-    # upload page
     def test_login_single_upload(self):
         driver = self.driver
-        driver.get(self.base_url)
-        # driver.get(self.base_url + "/")
+        driver.get(self.base_url + "/")
         driver.find_element_by_xpath("//input[@value='Login']").click()
         driver.find_element_by_id("id_username").clear()
         driver.find_element_by_id("id_username").send_keys("dummy")
