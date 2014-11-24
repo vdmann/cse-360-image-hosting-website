@@ -42,5 +42,29 @@ Modifying the Database
 To delete the db.sqlite database "cd" into the "src" folder directory in terminal then "ls" which will list out files and folders in the the directory, make sure that "db.sqlite3" is in the directory then "sudo rm db.sqlite3" to remove it. To create a new database schema simply execute "python manage.py syncdb". This will require you to create a superuser(admin) in terminal.
 
 =============================
+Code Coverage Report
+
+To see code coverage from testing, by typing this:
+
+"coverage run manage.py test -v 2"
+
+you will get to see how much code you've tested
+
+this command:
+
+"coverage html"
+
+creates a htmlcov folder in the src folder so you can actually look at the list of nice reports on things that were tested into a html template so when you click on index.html you get to see all the tests and the % covered
+if you go into the individual things that were tested for example drinker_files.html it'll display the whole code block and with syntax highlighted indicated which lines of code that skipped the tests. There usually represented in red
+
+"cd" into src->htmlcov to find html test code coverage reports on individual apps.
+
+
+=============================
+DISCLAIMER:
+
+When running "python manage.py test", there will be a total of 10 tests. By the second test, it tests the browser functionality running the window sideways. If that test hangs simply drag your testing window sideways in order for testing to continue. This will output an error in terminal and on the report.
+
+=============================
 Is this the key for rackspace cloud?
 4dc97a384c2ead36f934d71fe15019b0338b049a
