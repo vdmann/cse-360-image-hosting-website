@@ -62,7 +62,7 @@ def DraggingAndDropping(request):
         print "\n\n"
         # print "form: %s " % form
         print "the value of request.POST: %s" % request.POST
-        print "the value of request.FILES: %s" % request.FILES
+        print "\n\n\n\n\n\nthe value of request.FILES: %s" % request.FILES
 
         print "before assigning form: %s" % UploadFileForm(request.POST, request.FILES)
         

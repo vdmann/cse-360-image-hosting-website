@@ -13,50 +13,38 @@ from django.contrib.auth.models import User
 class FilterImg(ImageSpec):
     processors = Adjust(contrast=1.2, sharpness=1.1, brightness =1.3),
     format 	   = 'JPEG'
-    options    = {'quality': 100} 
+    options    = {'quality': 85} 
 
 #should pass a file
 def changeBright(request):
-    print "changeBright request"
-    print "\n\n"
-    # print "form: %s " % form
-    print "the value of request.POST: %s" % request.POST
-    print "the value of request.FILES: %s" % request.FILES
+    print "\n\n\n\n\n\n\n\n\n\nchangeBright request"
+    # print "the value of request: %s" % request 
+    # print "the value of request.user: %s" % request.user 
+    # print "the value of request.POST: %s" % request.POST
+    # print "the value of request.FILES: %s" % request.FILES
+    # print "the value of request.GET: %s" % request.GET
+
 
     #print "before assigning form: %s" % UploadFileForm(request.POST, request.FILES)
    
-    # if request.method == 'POST':
+    if request.method == 'GET':
+        print "\n\n\n\nthis request.method == GET"
         # session_var = Session.objects.get(pk=request.session._session_key).get_decoded()
         # user = User.objects.get(id = session_var['_auth_user_id'])
         # form = UploadFileForm(request.POST, request.FILES, user)
    
-   
-   # base_dir_path = settings.BASE_DIR
-    # img_list = os.path.join(os.path.dirname(base_dir_path),
-    #     "static", "media")
 
-	# source_file needs to take the request from the user
+    # if the edit directory does not exist for our users create one 
     source_file = open(settings.MEDIA_ROOT+'/test-images/elvis-duck.JPG')
-    
-    print "source_file :%s" % source_file  
-
     image_generator = FilterImg(source=source_file)
-    result = image_generator.generate()
-
-    #  this automatically creates directories with file output
-	# filename = "/foo/bar/baz.txt"
-	# if not os.path.exists(os.path.dirname(filename)):
-	#     os.makedirs(os.path.dirname(filename))
-	# with open(filename, "w") as f:
-	#     f.write("FOOBAR")
-    
-    dest = file(settings.MEDIA_ROOT+'/user_'+request.user.username +'/test.jpg', 'w')
-    
-    print "this is the dest variable: %s" % dest
-
+    result = image_generator.generate()    
+    dest = file(settings.MEDIA_ROOT+'/user_' + request.user.username + '/test.jpg', 'w')
     dest.write(result.read())
     dest.close()
+
     return render_to_response('filter.html', context_instance=RequestContext(request))
+
+
 
     # return render_to_response('filter.html', context_instance=RequestContext(request))
   
@@ -65,6 +53,25 @@ def changeBright(request):
 
 
 
+
+# from django.http import HttpResponseRedirect
+# from django.template import RequestContext
+# from django.core.urlresolvers import reverse
+# from django.shortcuts import render_to_response
+# from django.contrib.sessions.models import Session
+# from django.contrib.auth.models import User 
+# from django.db import models
+# from django.template import Context, Template
+# from django.conf import settings
+# from .forms import UploadFileForm
+# from .models import UploadFile
+
+# # scaling django by using caching for scaling
+# from django.views.decorators.cache import cache_page
+
+# # That will allow that view to be cached for 60 minutes (60 seconds * 60 minutes).
+# # @cache_page(60 * 60)
+# # @cache_page(60)
 # def DraggingAndDropping(request):
 #     # this if statement uses a HttpRequest.method, POST - submits data to be
 #     # processed to a specified resource 
@@ -202,5 +209,6 @@ def changeBright(request):
  
 
 
+#     # this has global access for the entire website
 #     data = {'form': form}
 #     return render_to_response('dropzone-drag-drop.html', data, context_instance=RequestContext(request))

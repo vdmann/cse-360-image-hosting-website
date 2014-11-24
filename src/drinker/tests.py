@@ -1,122 +1,3 @@
-# # -*- coding: utf-8 -*-
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.support.ui import Select
-# from selenium.common.exceptions import NoSuchElementException
-# from selenium.common.exceptions import NoAlertPresentException
-# import unittest, time, re
-
-# tests user login (WORKING TEST)
-# errors with username user_id 
-# class UnittestLogin(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = webdriver.Firefox()
-#         self.driver.implicitly_wait(30)
-#         self.base_url = "http://127.0.0.1:8000/"
-#         self.verificationErrors = []
-#         self.accept_next_alert = True
-    
-#     def test_unittest_login(self):
-#         driver = self.driver
-#         driver.get(self.base_url + "/login/?csrfmiddlewaretoken=CRYUwSdKmSB15rKlt7lXvsiqbFCLiTJt")
-#         # ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
-#         # ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
-    
-#     def is_element_present(self, how, what):
-#         try: self.driver.find_element(by=how, value=what)
-#         except NoSuchElementException, e: return False
-#         return True
-    
-#     def is_alert_present(self):
-#         try: self.driver.switch_to_alert()
-#         except NoAlertPresentException, e: return False
-#         return True
-    
-#     def close_alert_and_get_its_text(self):
-#         try:
-#             alert = self.driver.switch_to_alert()
-#             alert_text = alert.text
-#             if self.accept_next_alert:
-#                 alert.accept()
-#             else:
-#                 alert.dismiss()
-#             return alert_text
-#         finally: self.accept_next_alert = True
-    
-#     def tearDown(self):
-#         self.driver.quit()
-#         self.assertEqual([], self.verificationErrors)
-
-# if __name__ == "__main__":
-#     unittest.main()
-
-
-
-# user registration (WORKING TEST)
-# -*- coding: utf-8 -*-
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.support.ui import Select
-# from selenium.common.exceptions import NoSuchElementException
-# from selenium.common.exceptions import NoAlertPresentException
-# import unittest, time, re
-
-# class RegisteringUsers(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = webdriver.Firefox()
-#         self.driver.implicitly_wait(30)
-#         self.base_url = "http://127.0.0.1:8000/"
-#         self.verificationErrors = []
-#         self.accept_next_alert = True
-    
-#     def test_registering_users(self):
-#         driver = self.driver
-#         # driver.get(self.base_url + "/")
-#         driver.get(self.base_url + "")
-#         driver.find_element_by_xpath("//input[@value='Register']").click()
-#         driver.find_element_by_id("id_username").clear()
-#         driver.find_element_by_id("id_username").send_keys("1234")
-#         driver.find_element_by_id("id_email").clear()
-#         driver.find_element_by_id("id_email").send_keys("1234@gmail.com")
-#         driver.find_element_by_id("id_password").clear()
-#         driver.find_element_by_id("id_password").send_keys("1234")
-#         driver.find_element_by_id("id_password1").clear()
-#         driver.find_element_by_id("id_password1").send_keys("1234")
-#         driver.find_element_by_id("id_name").clear()
-#         driver.find_element_by_id("id_name").send_keys("1234")
-#         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
-    
-#     def is_element_present(self, how, what):
-#         try: self.driver.find_element(by=how, value=what)
-#         except NoSuchElementException, e: return False
-#         return True
-    
-#     def is_alert_present(self):
-#         try: self.driver.switch_to_alert()
-#         except NoAlertPresentException, e: return False
-#         return True
-    
-#     def close_alert_and_get_its_text(self):
-#         try:
-#             alert = self.driver.switch_to_alert()
-#             alert_text = alert.text
-#             if self.accept_next_alert:
-#                 alert.accept()
-#             else:
-#                 alert.dismiss()
-#             return alert_text
-#         finally: self.accept_next_alert = True
-    
-#     def tearDown(self):
-#         self.driver.quit()
-#         self.assertEqual([], self.verificationErrors)
-
-# if __name__ == "__main__":
-#     unittest.main()
-
-
 ################################################################################
 # USER REGISTRATION AND LOGIN
 # -*- coding: utf-8 -*-
@@ -766,3 +647,38 @@ class LoginUserNavigation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+################################################################################
+# UNIT TESTING HERE
+# ##############################################################################
+# test line 22 from drinker.models
+# from django.db import models
+# from django.db.models.signals import post_save
+# from django.contrib.auth.models import User
+# # from drinker.files import get_upload_path
+
+# # # user profile avatar
+# # def _upload_path(instance, filename):
+# #   return instance.get_upload_path(filename)
+
+# class Drinker(models.Model):
+#     user    = models.OneToOneField(User)
+#     name    = models.CharField(max_length=100)
+#     # user profile avatar
+#     # upload_to= "insert dynamic upload files here"
+#     # avatar    = models.ImageField("Profile Picture", upload_to=_upload_path, blank=True, null=True)
+
+#     # user profile avatar
+#     # def get_upload_path(self, filename):
+#     #   return "user_"+str(self.user.username)+"/"+filename
+
+#     def __unicode__(self):
+#         return self.name # <--- this is line 22
+
+
+         
+# from django.test import TestCase
+# from drinker.models import Drinker
+# from django.core.urlresolvers import reverse
+# from whatever.forms import WhateverForm

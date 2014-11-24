@@ -7,7 +7,6 @@
 <!-- Is {% load staticfiles %} always called once? -->
 {% load staticfiles %}
 
-
         <!-- 
         HTML and Django, Managing static files
         
@@ -157,9 +156,9 @@
 
 
 
-
+<!--  
     <style type="text/css">
-            .pic  img{
+/*            .pic  img{
 
 
             }
@@ -194,18 +193,21 @@
             opacity: 0.8; /* good browsers */
             filter: alpha(opacity=80); /* ye 'old IE */ 
         }
-
+*/
 
     </style>    
+-->
 
 
 
+
+
+<!--
     <div class="show-image focus pic ">
 
-    <!-- we can use ajax here, to dynamically load up our pictures -->
-<!--     {% for image in images %}
+    {% for image in images %}
         <img src="/media/{{ image.file.name }}" />
-    {% endfor %} -->
+    {% endfor %}
 
 
     <script type="text/javascript">
@@ -234,8 +236,8 @@
             document.write("<img src='"+ imgArray[0].src +"'/>");
         }
 
-        // <!-- ON CLICK using JavaScript this is should be at the end of the HTML 
-        // file scans for each image occurence in the webpage -->
+        // ON CLICK using JavaScript this is should be at the end of the HTML 
+        // file scans for each image occurence in the webpage 
         var images = document.getElementsByTagName("img");
         for(var i = 0; i < images.length; i++) {
             var image = images[i];
@@ -254,7 +256,7 @@
 
             //     // this will be turned in to something that activates a filter for this particular image in the image array.
                 // document.write("<img src='"+ imgArray[i].src +"'/>");
-
+                // <input type="button" onclick="window.location.href='/index/'"> </input>
             //     // this redirects me to a different page
             //     // window.location.href = this.id + '.html';
             //     // this should react to the edit a button          
@@ -262,5 +264,6 @@
     }
     </script>
 </div>
+-->
 
 {% endblock %}
