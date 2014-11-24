@@ -39,7 +39,7 @@ wsgiref==0.1.2
 =============================
 Modifying the Database
 
-To delete the db.sqlite database "cd" into the "src" folder directory in terminal then "ls" which will list out files and folders in the the directory, make sure that "db.sqlite3" is in the directory then "sudo rm db.sqlite3" to remove it. To create a new database schema simply execute "python manage.py syncdb"
+To delete the db.sqlite database "cd" into the "src" folder directory in terminal then "ls" which will list out files and folders in the the directory, make sure that "db.sqlite3" is in the directory then "sudo rm db.sqlite3" to remove it. To create a new database schema simply execute "python manage.py syncdb". This will require you to create a superuser(admin) in terminal.
 
 =============================
 Is this the key for rackspace cloud?
