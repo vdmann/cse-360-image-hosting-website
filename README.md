@@ -1,6 +1,6 @@
 cse-360-image-hosting-website
 =============================
-Image upload csc 360 Dee Derek Dakota
+Image upload CSC-360 Visitnna Dee Mann, Derek Norman, and Dakota Nunez
 
 Here is a list of dependencies if there are problems be sure to use "sudo pip install" we used a virtual env in ubuntu 14.04 using "source bin/activate" to start the environment
 
@@ -36,6 +36,10 @@ unittest2==0.8.0
 virtualenv==1.11.6
 wsgiref==0.1.2
 
+=============================
+Modifying the Database
+
+To delete the db.sqlite database "cd" into the "src" folder directory in terminal then "ls" which will list out files and folders in the the directory, make sure that "db.sqlite3" is in the directory then "sudo rm db.sqlite3" to remove it. To create a new database schema simply execute "python manage.py syncdb"
 
 =============================
 Is this the key for rackspace cloud?
