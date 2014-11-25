@@ -39,7 +39,12 @@ wsgiref==0.1.2
 =============================
 Modifying the Database
 
-To delete the db.sqlite database "cd" into the "src" folder directory in terminal then "ls" which will list out files and folders in the the directory, make sure that "db.sqlite3" is in the directory then "sudo rm db.sqlite3" to remove it. To create a new database schema simply execute "python manage.py syncdb". This will require you to create a superuser(admin) in terminal.
+To delete the db.sqlite3 database "cd" into the "src" folder directory in terminal then "ls" which will list out files and folders in the the directory, make sure that "db.sqlite3" is in the directory then "sudo rm db.sqlite3" to remove it. To create a new database schema simply execute "python manage.py syncdb". This will require you to create a superuser(admin) in terminal.
+
+=============================
+Registered Users
+
+The db.sqlite3 provides an already registered superuser and a regular user for the the superuser password and login information it is "dee-mann" for login and "123" for the password. For our regular user login, the login information is "123" and password is "123"
 
 =============================
 Code Coverage Report
@@ -66,8 +71,6 @@ DISCLAIMER:
 Testing and functionality should be done only on Chrome!
 
 When running "python manage.py test", there will be a total of 10 tests. By the second test, it tests the browser functionality running the window sideways. If that test hangs simply drag your testing window sideways in order for testing to continue. This will output an error in terminal and on the report.
-
-=============================
 
 =============================
 Is this the key for rackspace cloud?
