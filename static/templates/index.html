@@ -80,7 +80,7 @@
 
 
     <script language="javascript">
-    
+
       function makeHttpObject() {
         try {return new XMLHttpRequest();}
         catch (error) {}
@@ -94,6 +94,7 @@
 
       show(typeof(makeHttpObject()));
 
+      // this is for Chrome
       function changeImage(currentSrc) {
         alert("Would you like this image filtered?");
         location.reload();
@@ -102,6 +103,7 @@
         request.open("GET", "filter?iname="+currentSrcVariable, true);
         request.send();
       }
+
     </script>
 
 </div>
