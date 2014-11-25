@@ -83,7 +83,7 @@ INSTALLED_APPS = (
     # 'django_ajax',
     'filter',
     'storages',
-    'varnishapp',
+    # 'varnishapp',
     'lettuce.django',
 )
 

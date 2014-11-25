@@ -53,7 +53,7 @@ urlpatterns = patterns('',
     url(r'^register/$', 'drinker.views.DrinkerRegistration'),
     url(r'^login/$', 'drinker.views.LoginRequest'),
     url(r'^logout/$', 'drinker.views.LogOutRequest'),
-    url(r'^filter/$', 'filter.views.changeBright'),
+    # url(r'^filter/$', 'filter.views.changeBright'),
     url(r'^index/filter/$', 'filter.views.changeBright'),
 
     # work in progress
@@ -80,7 +80,7 @@ urlpatterns = patterns('',
     # url(r'^index/$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     
     # not sure if I need an actual url wrapper in this code. 
-    url(r'^admin/varnish/', include('varnishapp.urls')),
+    # url(r'^admin/varnish/', include('varnishapp.urls')),
 
 )
 

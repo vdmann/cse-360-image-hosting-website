@@ -22,9 +22,9 @@
             <form class="navbar-form navbar-right" role="form" method="get" action="/logout/">
               <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="Logout">
           </form>
-          <form class="navbar-form navbar-right" role="form" method="get" action="/filter/">
+<!--           <form class="navbar-form navbar-right" role="form" method="get" action="/filter/">
             <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="My Edited Pictures">
-        </form>
+        </form> -->
         <!-- this button redirects users to the list of images -->
         <form class="navbar-form navbar-right" role="form" method="get" action="/login/">
             <input type="submit" name= "redirect" class='btn btn-success btn btn-mini' value="Upload Pictures">
@@ -80,26 +80,28 @@
 
 
     <script language="javascript">
-    function makeHttpObject() {
-      try {return new XMLHttpRequest();}
-      catch (error) {}
-      try {return new ActiveXObject("Msxml2.XMLHTTP");}
-      catch (error) {}
-      try {return new ActiveXObject("Microsoft.XMLHTTP");}
-      catch (error) {}
+    
+      function makeHttpObject() {
+        try {return new XMLHttpRequest();}
+        catch (error) {}
+        try {return new ActiveXObject("Msxml2.XMLHTTP");}
+        catch (error) {}
+        try {return new ActiveXObject("Microsoft.XMLHTTP");}
+        catch (error) {}
 
-      throw new Error("Could not create HTTP request object.");
-    }
+        throw new Error("Could not create HTTP request object.");
+      }
 
-    show(typeof(makeHttpObject()));
+      show(typeof(makeHttpObject()));
 
-    function changeImage(currentSrc) {
-      alert(currentSrc);
-      var currentSrcVariable = currentSrc;
-      var request = makeHttpObject();
-      request.open("GET", "filter?iname="+currentSrcVariable, true);
-      request.send();
-    }
+      function changeImage(currentSrc) {
+        alert("Would you like this image filtered?");
+        location.reload();
+        var currentSrcVariable = currentSrc;
+        var request = makeHttpObject();
+        request.open("GET", "filter?iname="+currentSrcVariable, true);
+        request.send();
+      }
     </script>
 
 </div>

@@ -21,49 +21,43 @@ def changeBright(request):
     print "changeBright request"
     print "\n"
    
-    ######################################
-    # TESTING 
-    if request.method == 'GET':
-        print "filter get %s" % request.GET['iname']
-    ######################################
     filename = request.GET['iname']
-    filename_split = filename.split("/user_")
+    filename_split = filename.split(request.user.username+"/")
+   
     print "\n\n\nthis is filename_split: %s" % filename_split
-    print "\n inameStr: %s" % filename_split[1]
-
+    print "\n filname_split[-1]: %s" % filename_split[-1]
+   
+    filename_original = filename_split[-1]
 
     inameStr = request.GET['iname']
+   
     print  inameStr
+   
     inameStr= inameStr.split("8000/media")
 
     # print source to terminal
     print "\n inameStr: %s" % inameStr[-1]
+   
     source_file_path =settings.MEDIA_ROOT+inameStr[-1]
+   
     print "source_file :%s" % source_file_path  
 
     # manipulate image here
     source_file = open(settings.MEDIA_ROOT + inameStr[-1], 'r')
     image_generator = FilterImg(source=source_file)
     result = image_generator.generate()
-    dest = file(settings.MEDIA_ROOT+'/user_'+request.user.username +'/test.jpg', 'w')
+
+    
+    if settings.MEDIA_ROOT+'/user_'+request.user.username + "/" + filename_original:
+        filename_original = filename_split[-1].join("_edit")
+        print "\n\n\n\n\nthis file name exists"
+
+    dest = file(settings.MEDIA_ROOT+'/user_'+request.user.username +'/'+filename_original, 'w')
     dest.write(result.read())
     dest.close()
   
-    # upload code here
-    new_file = UploadFile(file = '/user_'+request.user.username +'/test.jpg')
-
-    # print "\n"
-    # print "request.user: %s" % request.user
-
+    new_file = UploadFile(file = 'user_'+request.user.username +'/'+filename_original)
     new_file.user = request.user
-
-    # print "\n"
-    # print "new_file.user: %s" % new_file.user
-    # print "\n"
-
-    # print "\nnew_file.user = request.user value: %s" % new_file.user
-    # print "\nnew_file value: %s" % new_file
-    
     new_file.save()
 
     # this is to pass in the data into render_to_response
