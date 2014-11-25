@@ -78,5 +78,10 @@ test_login_user_navigation_bar_test_admin (drinker.tests.LoginUserNavigationBarT
 test_login_user_navigation_bar_test_user (drinker.tests.LoginUserNavigationBarTestUser) ... ERROR
 
 =============================
+YouTube Demonstration Video
+
+https://www.youtube.com/watch?v=TjrW_fI1nG4
+
+=============================
 Is this the key for rackspace cloud?
 4dc97a384c2ead36f934d71fe15019b0338b049a
