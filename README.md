@@ -72,7 +72,10 @@ Testing was done on Firefox using Selenium
 
 User functionality without Selenium testing should be done only on Chrome!
 
-When running "python manage.py test", there will be a total of 10 tests. By the second test, it tests the browser functionality running the window sideways. If that test hangs simply drag your testing window sideways in order for testing to continue. This will output an error in terminal and on the report.
+When running "python manage.py test", there will be a total of 10 tests. By the second/third test, it tests the browser functionality running the window sideways. If that test hangs simply drag your testing window sideways in order for testing to continue. This will output an error in terminal and on the report below.
+
+test_login_user_navigation_bar_test_admin (drinker.tests.LoginUserNavigationBarTestAdmin) ... ERROR
+test_login_user_navigation_bar_test_user (drinker.tests.LoginUserNavigationBarTestUser) ... ERROR
 
 =============================
 Is this the key for rackspace cloud?
