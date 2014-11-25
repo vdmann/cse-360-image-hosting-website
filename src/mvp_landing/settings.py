@@ -55,13 +55,9 @@ AUTH_PROFILE_MODULE = 'drinker.Drinker'
 # AUTH_USER_MODEL = 'auth.User'
 
 
-
-
-
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
-    
     # User authentication in Django
     # The permission model in django.contrib.auth depends on django.contrib.contenttypes.
     'django.contrib.auth',
@@ -70,16 +66,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
      # this is for django-photologue
-    'django.contrib.sites',
-    # my apps
+    # 'django.contrib.sites',
     # 'signups',
     'drinker',
     'dragdrop',
     'south', # Only if you're relying on South for migrations
     'imagekit',
     'annoying',
-    # using ajax, this can possibly make things slightly easier
-    # with images
     # 'django_ajax',
     'filter',
     'storages',
@@ -110,42 +103,24 @@ SOUTH_MIGRATION_MODULES = {
 # This uses a write through cache  every write to the cache will also be 
 # written to the database. Session reads only use the database if the data is 
 # not already in the cache.
-# 
-
-
-
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db" 
-
-# using file-based sessions
-# can we use this to retrieve the user's session information in which we can use 
-# for our string_builder feature?
 # SESSION_ENGINE = "django.contrib.sessions.backends.file"
 SESSION_FILE_PATH = ""
 
 
-
-# Goes through MIDDLEWARE_CLASSES first then looks for "views" and looks for 
-# INSTALLED_APPS
 MIDDLEWARE_CLASSES = (
-    # for authentication in web requests
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # for authentication in web requests
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 )
 
 # where URL's are handles in each part 
 ROOT_URLCONF = 'mvp_landing.urls'
 
 WSGI_APPLICATION = 'mvp_landing.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -176,9 +151,6 @@ DATABASES = {
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -191,51 +163,20 @@ USE_TZ = True
 
 
 
-# what is rendered by the browser, not so much Django
 STATIC_URL = '/static/'
 
-# this is for photologue (not working)
-# TEMPLATE_LOADERS = (
-#     'django.template.loaders.filesystem.Loader',
-#     'django.template.loaders.app_directories.Loarder',
-# )
 
-# this is for photologue
-# from photologue import PHOTOLOGUE_APP_DIR
-
-# setting our template location
-# note this is a tuple
-TEMPLATE_DIRS = (
-    
-    # this joins the path of the folder that is 1 up the base directory
-    # it will look for static and under static it will look for templates 
+TEMPLATE_DIRS = (    
     os.path.join(os.path.dirname(BASE_DIR), "static", "templates"),
-    
-    # this is for photologue
-    # PHOTOLOGUE_APP_DIR
-    
-    # Replaces the normal templates with the templates that used to come with 
-    # Photologue 2.X. Use these if you have an existing project that extends 
-    # these old-style templates.
-    # os.path.join(PHOTOLOGUE_TEMPLATE_DIR, 'contrib/old_style_templates'),
-
-    # this is a reference:
-    # '/home/dee-mann/Desktop/skillshare/static/templates/',
-
 )
-
 
 
 if DEBUG:
     MEDIA_URL = '/media/'
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-only")
     
-    # where pictures are stored
     MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
-    
-    # a tuple that collects CSS and JavaScript files
-    # useful for production and collecting static files.
-    # note that this is a tuple. This loads the static files
+
     STATICFILES_DIRS = (
         os.path.join(os.path.dirname(BASE_DIR), 'static', 'static'),
     )
@@ -287,5 +228,5 @@ if DEBUG:
 
 
 # this is for Varnish caching for HTTP acceleration
-VANRISH_WATCHED_MODELS = 'auth.user','drinker.Drinker'
-VARNISH_MANAGEMENT_ADDRS = 'server1:6082', 'server2:6082'
+# VANRISH_WATCHED_MODELS = 'auth.user','drinker.Drinker'
+# VARNISH_MANAGEMENT_ADDRS = 'server1:6082', 'server2:6082'
