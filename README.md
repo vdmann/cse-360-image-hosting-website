@@ -63,7 +63,11 @@ if you go into the individual things that were tested for example drinker_files.
 =============================
 DISCLAIMER:
 
+Testing and functionality should be done only on Chrome!
+
 When running "python manage.py test", there will be a total of 10 tests. By the second test, it tests the browser functionality running the window sideways. If that test hangs simply drag your testing window sideways in order for testing to continue. This will output an error in terminal and on the report.
+
+=============================
 
 =============================
 Is this the key for rackspace cloud?
