@@ -34,33 +34,33 @@ class RegisterUserSuccess(unittest.TestCase):
         driver.find_element_by_id("id_name").send_keys("123")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+    # def is_element_present(self, how, what):
+        # try: self.driver.find_element(by=how, value=what)
+        # except NoSuchElementException, e: return False
+        # return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+    # def is_alert_present(self):
+        # try: self.driver.switch_to_alert()
+        # except NoAlertPresentException, e: return False
+        # return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
-    
+    # def close_alert_and_get_its_text(self):
+        # try:
+        #     alert = self.driver.switch_to_alert()
+        #     alert_text = alert.text
+        #     if self.accept_next_alert:
+        #         alert.accept()
+        #     else:
+        #         alert.dismiss()
+        #     return alert_text
+        # finally: self.accept_next_alert = True
+
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -100,33 +100,33 @@ class RegisterUsersPasswordFail(unittest.TestCase):
         driver.find_element_by_id("id_name").send_keys("123")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -167,33 +167,33 @@ class RegisterUserEmailFail(unittest.TestCase):
         driver.find_element_by_id("id_name").send_keys("123")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -234,33 +234,33 @@ class RegisterUserExistingUserFail(unittest.TestCase):
         driver.find_element_by_id("id_name").send_keys("123")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -297,33 +297,33 @@ class LoginUserSuccess(unittest.TestCase):
         driver.find_element_by_id("id_password").send_keys("123")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -360,33 +360,33 @@ class LoginUserValidUsernameWrongPassword(unittest.TestCase):
         driver.find_element_by_id("id_password").send_keys("1231231")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -423,33 +423,33 @@ class LoginUserSuccess(unittest.TestCase):
         driver.find_element_by_id("id_password").send_keys("123")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -486,33 +486,33 @@ class LoginUserNotFound(unittest.TestCase):
         driver.find_element_by_id("id_password").send_keys("asdada")
         driver.find_element_by_css_selector("input[type=\"submit\"]").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 ################################################################################
@@ -552,33 +552,33 @@ class LoginNavigationBarTest(unittest.TestCase):
         driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
         driver.find_element_by_name("redirect").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
@@ -620,65 +620,35 @@ class LoginUserNavigation(unittest.TestCase):
         driver.find_element_by_xpath("(//input[@name='redirect'])[3]").click()
         driver.find_element_by_name("redirect").click()
     
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
+#     def is_element_present(self, how, what):
+#         try: self.driver.find_element(by=how, value=what)
+#         except NoSuchElementException, e: return False
+#         return True
     
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
+#     def is_alert_present(self):
+#         try: self.driver.switch_to_alert()
+#         except NoAlertPresentException, e: return False
+#         return True
     
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+#     def close_alert_and_get_its_text(self):
+#         try:
+#             alert = self.driver.switch_to_alert()
+#             alert_text = alert.text
+#             if self.accept_next_alert:
+#                 alert.accept()
+#             else:
+#                 alert.dismiss()
+#             return alert_text
+#         finally: self.accept_next_alert = True
     
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 ################################################################################
 # UNIT TESTING HERE
 # ##############################################################################
-# test line 22 from drinker.models
-# from django.db import models
-# from django.db.models.signals import post_save
-# from django.contrib.auth.models import User
-# # from drinker.files import get_upload_path
-
-# # # user profile avatar
-# # def _upload_path(instance, filename):
-# #   return instance.get_upload_path(filename)
-
-# class Drinker(models.Model):
-#     user    = models.OneToOneField(User)
-#     name    = models.CharField(max_length=100)
-#     # user profile avatar
-#     # upload_to= "insert dynamic upload files here"
-#     # avatar    = models.ImageField("Profile Picture", upload_to=_upload_path, blank=True, null=True)
-
-#     # user profile avatar
-#     # def get_upload_path(self, filename):
-#     #   return "user_"+str(self.user.username)+"/"+filename
-
-#     def __unicode__(self):
-#         return self.name # <--- this is line 22
-
-
-         
-# from django.test import TestCase
-# from drinker.models import Drinker
-# from django.core.urlresolvers import reverse
-# from whatever.forms import WhateverForm

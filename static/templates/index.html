@@ -72,25 +72,12 @@
 
     {% for image in images %}
     <body>
-
         <p>{{image.file.name}}</p>
-
     </body>
     <img src="/media/{{ image.file.name  }}" id="imgFilter" onclick="changeImage(currentSrc)"/>
-
-
-      <!-- <img src="/media/{{ image.file.name  }}" id="imgFilter "count = (count+1) myimg=img.currentSrc onclick="changeImage("currentSrc")"/>
-  --><!-- <img src="/media/{{ image.file.name }}" id="imgFilter"  onclick="changeImage()"/> -->
-  <!--             name = document.getElementById("imgFilter").currentSrc;  -->
-
-  <!--         <img alt= "" src="/media/{{ image.file.name }}" style="height: 85px; width: 198px" id="imgFilter" onclick="changeImage()"  />    -->   
-  {% endfor %}
+    {% endfor %}
 </div>
 
-<!-- <div class="show-image click"> -->
-<!--     <p>
-        <img alt= "" src="/media/{{ image.file.name }}" style="height: 85px; width: 198px" id="imgFilter" onclick="changeImage()"  />
-    </p> -->
 
     <script language="javascript">
     function makeHttpObject() {
@@ -107,23 +94,11 @@
     show(typeof(makeHttpObject()));
 
     function changeImage(currentSrc) {
-    //alert("changeImage");
-    alert(currentSrc);
-    //aimg = document.getElementById("imgFilter"); 
-    //name = aimg.currentSrc;
-    //name = document.getElementById("imgFilter").myimg; 
-
-    // name = document.getElementById({{"imgFilter"}}).src; 
-    //alert(name); 
-    //alert(aimg); 
-
-
-    var request = makeHttpObject();
-    request.open("GET", "filter", false);
-    request.send(currentSrc);
-    //print(request.responseText);       
-
-
+      alert(currentSrc);
+      var currentSrcVariable = currentSrc;
+      var request = makeHttpObject();
+      request.open("GET", "filter?iname="+currentSrcVariable, true);
+      request.send();
     }
     </script>
 
