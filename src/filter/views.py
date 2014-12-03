@@ -10,6 +10,9 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from dragdrop.models import UploadFile
 
+from django.views.decorators.cache import cache_page
+
+# @cache_page(60 * 15)
 
 class FilterImg(ImageSpec):
     
@@ -21,9 +24,13 @@ class FilterImg(ImageSpec):
 def changeBright(request):
 
     filename = request.GET['iname']
+    
+    # this splits will depend on the domain of the website domain/namespace?
     filename_split = filename.split(request.user.username+"/")   
     filename_original = filename_split[-1]
     inameStr = request.GET['iname']
+
+    # this splits will depend on the domain of the website domain/namespace?
     inameStr= inameStr.split("8000/media")
     source_file_path =settings.MEDIA_ROOT+inameStr[-1]
     source_file = open(settings.MEDIA_ROOT + inameStr[-1], 'r')

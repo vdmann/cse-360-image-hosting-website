@@ -109,13 +109,23 @@ SESSION_FILE_PATH = ""
 
 
 MIDDLEWARE_CLASSES = (
+    # adding per-site caching, which caches the whole website
+    # for caching, this has to be the first in the list
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # for caching, this has to be in the last of the list
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
+
+# caches for 60 seconds?
+CACHE_MIDDLEWARE_SECONDS = 600
+# CACHE_MIDDLEWARE_ALIAS
 
 # where URL's are handles in each part 
 ROOT_URLCONF = 'mvp_landing.urls'
@@ -128,10 +138,10 @@ DATABASES = {
         # not reccommended for live deployment
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        #'USER':'',
-        #'PASSWORD':'', 
-        #'HOST':'',
-        #'PORT':'',
+        'USER':'',
+        'PASSWORD':'', 
+        'HOST':'',
+        'PORT':'',
             
         # were using MySQL instead
         # 'ENGINE': 'django.db.backends.mysql',
@@ -192,18 +202,29 @@ if DEBUG:
 # CLOUDFILES_SSL = True
 
 
+# OUTPUT FROM TERMINAL WHEN MEMCACHED IS ENABLED
+# [28/Nov/2014 01:00:09] code 400, message Bad HTTP/0.9 request type ('get')
+# [28/Nov/2014 01:00:09] "get :1:views.decorators.cache.cache_header..6666cd76f96956469e7be39d750cc7d9.en-us.UTC" 400 -
+# [28/Nov/2014 01:00:09] code 400, message Bad request syntax ('set :1:views.decorators.cache.cache_header..6666cd76f96956469e7be39d750cc7d9.en-us.UTC 1 600 25')
+# [28/Nov/2014 01:00:09] "set :1:views.decorators.cache.cache_header..6666cd76f96956469e7be39d750cc7d9.en-us.UTC 1 600 25" 400 -
+# [28/Nov/2014 01:00:09] "GET / HTTP/1.1" 200 7159
+# [28/Nov/2014 01:00:09] "GET /static/css/custom.css HTTP/1.1" 304 0
+# [28/Nov/2014 01:00:09] code 400, message Bad HTTP/0.9 request type ('get')
+# [28/Nov/2014 01:00:09] "get :1:views.decorators.cache.cache_header..35a63c8a85b1279a0f991ce8828fb9d9.en-us.UTC" 400 -
 
 # this is for Django's memcache
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#         'LOCATION': [
-#             '172.19.26.240:11211',
-#             '172.19.26.242:11212',
-#             '172.19.26.244:11213',
-#         ]
-#     }
-# }
+CACHE_BACKEND = 'memcached://127.0.0.1:8000/'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            '127.0.0.1:8000',
+            # '172.19.26.242:11212',
+            # '172.19.26.244:11213',
+        ]
+    }
+}
 
 # CACHES = {
 #     'default': {
@@ -230,3 +251,23 @@ if DEBUG:
 # this is for Varnish caching for HTTP acceleration
 # VANRISH_WATCHED_MODELS = 'auth.user','drinker.Drinker'
 # VARNISH_MANAGEMENT_ADDRS = 'server1:6082', 'server2:6082'
+
+
+
+# SSH'ing into Rackspace
+# ssh dee@166.78.144.71
+# password is 123
+
+
+
+# ssh root@166.78.144.71
+# 5GfMh2J9kHh3
+
+# server2
+# 166.78.147.191:8000
+# ssh root@166.78.147.191
+# pdye8ysbsTW3 -new
+# VtSfPTnY3X9e
+
+# load bal
+# 104.130.251.238

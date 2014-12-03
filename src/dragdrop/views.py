@@ -14,8 +14,8 @@ from .models import UploadFile
 from django.views.decorators.cache import cache_page
 
 # That will allow that view to be cached for 60 minutes (60 seconds * 60 minutes).
-# @cache_page(60 * 60)
-# @cache_page(60)
+# @cache_page(60 * 15)
+@cache_page(10)
 def DraggingAndDropping(request):
     # this if statement uses a HttpRequest.method, POST - submits data to be
     # processed to a specified resource 
@@ -37,7 +37,7 @@ def DraggingAndDropping(request):
     data = {'form': form}
     return render_to_response('dropzone-drag-drop.html', data, context_instance=RequestContext(request))
 
-
+# @cache_page(60 * 15)
 # @cache_page(60)
 def GetUserImages(request):
     all_images = UploadFile.objects.all().filter(user_id=request.user.id)

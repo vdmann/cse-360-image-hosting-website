@@ -7,7 +7,10 @@ from drinker.forms import RegistrationForm, LoginForm
 from drinker.models import Drinker
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.sessions.models import Session
+# 
+from django.views.decorators.cache import cache_page
 
+# @cache_page(60 * 15)
 # if user hits the registration or already logged-in send them to profile since they are already registered
 def DrinkerRegistration(request):
     
@@ -41,6 +44,8 @@ def DrinkerRegistration(request):
         context = {'form': form}
         return render_to_response('register.html', context, context_instance=RequestContext(request))
         
+
+# @cache_page(60 * 15)        
 # don't name a method "Login" since Django already provides a method for that.       
 def LoginRequest(request):
     
@@ -70,7 +75,8 @@ def LoginRequest(request):
         form = LoginForm()
         context = {'form': form}
         return render_to_response('login.html', context, context_instance=RequestContext(request))
-       
+
+# @cache_page(60 * 15)       
 def LogOutRequest(request):
     logout(request)
     return HttpResponseRedirect('/')

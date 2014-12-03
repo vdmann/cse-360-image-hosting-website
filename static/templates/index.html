@@ -101,7 +101,10 @@ show(typeof(makeHttpObject()));
         var request = makeHttpObject();
         request.open("GET", "filter?iname="+currentSrcVariable, true);
         request.send();
+        // delay(5000);
         location.reload();
+
+
     }
 
     </script>
