@@ -1,0 +1,5 @@
+*NOTE THIS IS THE NON-GUI METHOD*
+
+- Change your test scripts by editing the file .jmx name in the first path URL destination 
+
+jmeter -n -t /home/dee-mann/Desktop/project-4/skillshare/jmeter/UserLoginAccessHomeLocal.jmx -l /home/dee-mann/Desktop/project-4/skillshare/jmeter/remote-test.jtl
